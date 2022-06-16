@@ -7,13 +7,25 @@
     <body>
         <h1><%= "Formulario JSP" %></h1>
 
+
         <form method="post" action="ServletLogin">
-            <input name="nome">
-            <input name="idade">
-
-            <input type="submit" value="Enviar Formulario">
-
-
+            <table>
+                <tr>
+                    <td><label>Login</label></td>
+                    <td><input name="login" type="text"></td>
+                </tr>
+                <tr>
+                    <td><label>Senha</label></td>
+                    <td><input name="password" type="password"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="submit" value="Enviar Formulario">
+                    </td>
+                </tr>
+            </table>
         </form>
+    <h4>${msng}</h4>
     </body>
 </html>
