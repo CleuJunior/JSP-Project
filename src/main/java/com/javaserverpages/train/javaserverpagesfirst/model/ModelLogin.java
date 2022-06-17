@@ -1,4 +1,4 @@
-package com.javaserverpages.train.javaserverpagesfirst.servlets.model;
+package com.javaserverpages.train.javaserverpagesfirst.model;
 
 import java.io.Serializable;
 
