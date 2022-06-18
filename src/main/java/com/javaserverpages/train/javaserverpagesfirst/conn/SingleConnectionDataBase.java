@@ -5,13 +5,14 @@ import java.sql.DriverManager;
 
 public class SingleConnectionDataBase {
 
-    private static final String DATABASE_NAME = "jdbc:postgressql://localhost:5432/jsp-postgres?autoReconnect=true";
+    private static final String DATABASE_URL = "jdbc:postgresql://localhost:5432/jsp-postgres?autoReconnect=true";
     private static final String USER_DATABASE_NAME = "postgres";
     private static final String PASSWORD_DATABASE = "postgres";
     private static  Connection connection = null;
 
-    public SingleConnectionDataBase() { /* Quando tiver uma instancia da classe ele conecta automaticamente */
+    static {
         conn();
+
     }
 
     public static Connection getConnection() {
@@ -24,7 +25,7 @@ public class SingleConnectionDataBase {
             if(connection == null) {
                 Class.forName("org.postgresql.Driver"); /* carrega o drive de conexao do banco */
 
-                connection = DriverManager.getConnection(DATABASE_NAME, USER_DATABASE_NAME, PASSWORD_DATABASE);
+                connection = DriverManager.getConnection(DATABASE_URL, USER_DATABASE_NAME, PASSWORD_DATABASE);
                 connection.setAutoCommit(false); /* Nao efetuar alteracoes no banco sem nosso comando */
             }
 

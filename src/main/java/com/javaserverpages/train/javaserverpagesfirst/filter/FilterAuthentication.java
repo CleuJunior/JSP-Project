@@ -80,6 +80,11 @@ public class FilterAuthentication implements Filter { /* Intecepta todas as requ
 
         } catch (Exception e) {
             e.printStackTrace();
+
+            RequestDispatcher redirect = servletRequest.getRequestDispatcher("error.jsp");
+
+            servletRequest.setAttribute("msng", e.getMessage());
+            redirect.forward(servletRequest, servletResponse);
             try {
                 connection.rollback();
             } catch (SQLException ex) {

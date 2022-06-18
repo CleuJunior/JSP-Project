@@ -9,7 +9,7 @@ CREATE DATABASE "jsp-postgres"
 CREATE TABLE public.model_login
 (
   login character varying(200),
-  pass character varying(200),
+  password character varying(200),
   CONSTRAINT login_unique UNIQUE (login)
 )
 WITH (

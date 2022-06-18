@@ -18,7 +18,7 @@ import java.io.IOException;
 public class ServletLogin extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    private LoginRepositoryDAO loginDAO = new LoginRepositoryDAO();
+    private final LoginRepositoryDAO loginDAO = new LoginRepositoryDAO();
 
     public ServletLogin() {
     }
@@ -45,7 +45,8 @@ public class ServletLogin extends HttpServlet {
 
             } else {
 
-                ModelLogin modelLogin = new ModelLogin(login, password);
+                ModelLogin modelLogin = null;
+//                ModelLogin modelLogin = new ModelLogin(login, password);
 
                 if(loginDAO.validateAuthentication(modelLogin)) {
                     request.getSession().setAttribute("user", modelLogin.getLogin());
@@ -69,6 +70,11 @@ public class ServletLogin extends HttpServlet {
 
         } catch (Exception e) {
             e.printStackTrace();
+
+            RequestDispatcher redirect = request.getRequestDispatcher("error.jsp");
+
+            request.setAttribute("msng", e.getMessage());
+            redirect.forward(request, response);
         }
     }
 }
